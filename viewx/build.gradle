@@ -1,0 +1,64 @@
+plugins {
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin.android)
+    id("maven-publish")
+}
+
+android {
+    namespace 'com.nopever.viewx'
+    compileSdk 34
+
+    defaultConfig {
+        minSdk 24
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+    // 开启发布源文件配置
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+        }
+    }
+}
+
+// 配置发布参数
+afterEvaluate {
+    publishing {
+        publications {
+            // Groovy 写法: 直接用名字(MavenPublication)
+            release(MavenPublication) {
+                // Groovy 中获取组件是用点号，不是方括号 ["release"]
+                from components.release
+
+                // 填入你的信息
+                groupId = 'com.github.NOPEVERZ' // 你的GitHub用户名
+                artifactId = 'viewx'          // 你的库名称
+                version = '1.0.0'
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation libs.androidx.core.ktx
+    implementation libs.androidx.appcompat
+    implementation libs.material
+    testImplementation libs.junit
+    androidTestImplementation libs.androidx.junit
+    androidTestImplementation libs.androidx.espresso.core
+}

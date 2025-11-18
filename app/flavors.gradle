@@ -1,0 +1,26 @@
+android {
+    flavorDimensions "channel"
+    productFlavors {
+        dev {
+            dimension "channel"
+        }
+        vivo {
+            dimension "channel"
+        }
+        qq {
+            dimension "channel"
+        }
+        oppo {
+            dimension "channel"
+        }
+        huawei {
+            dimension "channel"
+        }
+        xiaomi {
+            dimension "channel"
+        }
+        honor {
+            dimension "channel"
+        }
+    }
+}

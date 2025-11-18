@@ -1,0 +1,99 @@
+plugins {
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.hilt)
+    alias(libs.plugins.room)
+    alias(libs.plugins.ksp)
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+}
+apply from: 'flavors.gradle'
+android {
+    namespace APPLICATION_ID
+    compileSdk 34
+
+    signingConfigs {
+        sign {
+            storeFile file('./key.jks')
+            storePassword 'zimabluex'
+            keyAlias 'blue'
+            keyPassword 'zimabluex'
+        }
+    }
+
+    defaultConfig {
+        applicationId APPLICATION_ID
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        signingConfig = signingConfigs.sign
+        resValue("string", "app_name", "DEMO")
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            zipAlignEnabled true
+            shrinkResources true
+            proguardFiles '../proguard-android.pro', getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            initWith release
+            minifyEnabled false
+            zipAlignEnabled false
+            shrinkResources false
+            debuggable true
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+    dataBinding {
+        enable true
+    }
+    room {
+        schemaDirectory("$projectDir/schemas")
+    }
+    ksp {
+        arg("room.generateKotlin", "true")
+    }
+    buildFeatures {
+        buildConfig true
+    }
+    configurations.all {
+        resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+    }
+}
+
+dependencies {
+    api fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
+
+    implementation libs.androidx.appcompat
+    implementation libs.androidx.activity.ktx
+    implementation libs.androidx.fragment.ktx
+    implementation libs.androidx.core.ktx
+    implementation libs.constraint.layout
+    implementation libs.material
+    implementation libs.qmui
+
+    implementation libs.hilt.android
+    ksp libs.hilt.android.compiler
+    implementation libs.androidx.room.runtime
+    implementation libs.androidx.room.ktx
+    ksp libs.androidx.room.ksp
+    kapt libs.androidx.databinding.compiler
+    implementation 'com.louiscad.splitties:splitties-resources:3.0.0'
+    implementation 'com.louiscad.splitties:splitties-views-dsl-recyclerview:3.0.0'
+    implementation 'com.louiscad.splitties:splitties-views-dsl-constraintlayout:3.0.0'
+    implementation 'com.louiscad.splitties:splitties-views-dsl-coordinatorlayout:3.0.0'
+    implementation 'com.louiscad.splitties:splitties-views-dsl-appcompat:3.0.0'
+
+    implementation(project(":viewx"))
+}
