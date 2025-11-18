@@ -48,7 +48,7 @@ afterEvaluate {
                 // 填入你的信息
                 groupId = 'com.github.NOPEVERZ' // 你的GitHub用户名
                 artifactId = 'viewx'          // 你的库名称
-                version = '1.0.0'
+                version = '0.0.1-beta'
             }
         }
     }
