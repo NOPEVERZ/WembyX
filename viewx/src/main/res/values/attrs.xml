@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="HeaderLayout">
+        <attr name="hl_left_image" format="reference" />
+        <attr name="hl_right_image" format="reference" />
+        <attr name="hl_right_text" format="string" />
+        <attr name="hl_center_text" format="string" />
+        <attr name="hl_center_textcolor" format="color" />
+        <attr name="hl_head_back" format="reference" />
+    </declare-styleable>
+</resources>

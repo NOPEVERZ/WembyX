@@ -10,5 +10,8 @@ class MainActivity : BaseVmActivity<ActivityMainBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding.hl.setOnLeftImageViewClickListener {
+            finish()
+        }
     }
 }

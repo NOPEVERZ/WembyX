@@ -16,6 +16,14 @@
             android:orientation="vertical"
             android:gravity="center_horizontal">
 
+            <com.nopever.viewx.view.HeaderLayout
+                android:id="@+id/hl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hl_center_text="ss"
+                app:hl_right_text="ssss"
+                app:hl_left_image="@drawable/arrow_back" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

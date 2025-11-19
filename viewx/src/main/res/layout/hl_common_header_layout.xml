@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/relative_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:paddingTop="30dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="52.0dip"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/titleCenterView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="80dp"
+            android:layout_marginEnd="80dp"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:singleLine="true"
+            android:textColor="#333333"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/titleLeftView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:maxWidth="52.0dip"
+            android:minWidth="52.0dip"
+            android:scaleType="centerInside" />
+
+        <LinearLayout
+            android:id="@+id/linearRightView"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:includeFontPadding="false"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:singleLine="true">
+
+            <ImageView
+                android:id="@+id/titleRightView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clickable="false"
+                android:focusable="false"
+                android:scaleType="centerInside"
+                android:visibility="gone" />
+
+            <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundRelativeLayout
+                android:id="@+id/header_layout_right"
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:layout_marginEnd="15dp"
+                android:clickable="false"
+                android:focusable="false"
+                android:padding="2dp"
+                android:visibility="visible"
+                app:qmui_borderColor="#FFFAA6A6"
+                app:qmui_borderWidth="0dp">
+
+                <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+                    android:id="@+id/btn_right_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="24dp"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="#333333"
+                    android:textSize="12sp"
+                    app:qmui_borderWidth="0dp"
+                    app:qmui_radius="20dp" />
+
+            </com.qmuiteam.qmui.widget.roundwidget.QMUIRoundRelativeLayout>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

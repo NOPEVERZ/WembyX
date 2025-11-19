@@ -18,6 +18,9 @@
 在 XML 布局中，用 BounceView 包裹内容视图。
 注意：BounceView 只能有一个直接子 View。
 
+## HeaderLayout
+头布局自定义
+
 ## 📦 引入 (Installation)
 
 **Step 1. Add the JitPack repository**
