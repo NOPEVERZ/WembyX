@@ -12,7 +12,7 @@ import androidx.viewbinding.ViewBinding
 fun FragmentActivity.showDialog(
     layoutId: Int,
     builder: (EasyDialog.() -> Unit)? = null,
-    convert: (DialogViewHolder, UniversalDialogFragment) -> Unit
+    convert: (holder: DialogViewHolder, dialog: UniversalDialogFragment) -> Unit
 ) {
     EasyDialog.build(this)
         .setLayout(layoutId)
@@ -30,7 +30,7 @@ fun FragmentActivity.showDialog(
  */
 inline fun <reified T : ViewBinding> FragmentActivity.showBindDialog(
     noinline builder: (EasyDialog.() -> Unit)? = null,
-    noinline convert: (T, UniversalDialogFragment) -> Unit
+    noinline convert: (binding: T, dialog: UniversalDialogFragment) -> Unit
 ) {
     EasyDialog.build(this)
         .setBinding(T::class.java) // 传入 Class，内部提取 name 用于反射
@@ -45,7 +45,7 @@ inline fun <reified T : ViewBinding> FragmentActivity.showBindDialog(
  */
 inline fun <reified T : ViewBinding> FragmentActivity.showBottomBindDialog(
     noinline builder: (EasyDialog.() -> Unit)? = null,
-    noinline convert: (T, UniversalDialogFragment) -> Unit
+    noinline convert: (binding: T, dialog: UniversalDialogFragment) -> Unit
 ) {
     EasyDialog.build(this)
         .setBinding(T::class.java)
@@ -61,7 +61,7 @@ inline fun <reified T : ViewBinding> FragmentActivity.showBottomBindDialog(
 inline fun <reified T : ViewBinding> FragmentActivity.showDropDown(
     anchor: View,
     noinline builder: (EasyDialog.() -> Unit)? = null,
-    noinline convert: (T, UniversalDialogFragment) -> Unit
+    noinline convert: (binding: T, dialog: UniversalDialogFragment) -> Unit
 ) {
     EasyDialog.build(this)
         .setBinding(T::class.java)
