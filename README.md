@@ -72,6 +72,16 @@
     }
 ```
 
+## CrashUtil
+崩溃后自动跳转界面显示日志
+```kotlin
+    //App里初始化
+    override fun onCreate() {
+        super.onCreate()
+        CrashUtil.init(this)
+    }
+```
+
 ## 📦 引入 (Installation)
 
 **Step 1. Add the JitPack repository**

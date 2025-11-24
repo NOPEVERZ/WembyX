@@ -3,6 +3,7 @@ package com.nopever.z.module.main
 import android.os.Bundle
 import android.view.Gravity
 import android.view.View
+import android.widget.Toast
 import com.nopever.viewx.dialog.EasyDialog
 import com.nopever.viewx.dialog.showBindDialog
 import com.nopever.viewx.dialog.showBottomBindDialog
@@ -106,5 +107,10 @@ class MainActivity : BaseVmActivity<ActivityMainBinding>() {
         }) { binding, dialog ->
             // 绑定逻辑...
         }
+    }
+
+    fun crashTest(view: View) {
+        val i = "sssss"
+        val str = i.toInt()
     }
 }
