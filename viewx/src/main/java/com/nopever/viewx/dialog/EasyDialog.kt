@@ -8,6 +8,7 @@ import androidx.annotation.StyleRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.LifecycleOwner
 import androidx.viewbinding.ViewBinding
 import com.nopever.viewx.data.DialogConfig
 
@@ -23,6 +24,7 @@ class EasyDialog private constructor(private val fragmentManager: FragmentManage
     companion object {
         fun build(activity: FragmentActivity) = EasyDialog(activity.supportFragmentManager)
         fun build(fragment: Fragment) = EasyDialog(fragment.childFragmentManager)
+        fun build(fragmentManager: FragmentManager) = EasyDialog(fragmentManager)
     }
 
     fun setLayout(@LayoutRes layoutId: Int) = apply { config.layoutId = layoutId }

@@ -23,7 +23,7 @@
 
 ## EasyDialog
 ```kotlin
-    // 在 Activity 中直接简单调用
+    // 在 Activity/Fragment 中直接简单调用
     showBindDialog<DialogHintLayoutBinding> { binding, dialog ->
         binding.tvTitle.text = "标题"
     
@@ -48,7 +48,7 @@
     //底部弹窗
     showBottomBindDialog<DialogHintLayoutBinding> { binding, dialog ->
     }
-    //直接使用EasyDialog
+    //使用EasyDialog
     EasyDialog.build(this)
         .setLayout(R.layout.dialog_hint_layout)
         .setWidthScale(0.9f)
