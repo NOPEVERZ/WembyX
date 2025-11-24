@@ -39,6 +39,7 @@
     //            setAnim(R.style.MyDialogAnim) // 设置自定义动画
         setCanceledOnTouchOutside(false) // 禁止点击外部关闭
         setCanceledOnBackPressed(false)
+        setHeightDp(300.dp) //xml父布局设置固定高度无效，可在这里设置
     }) { binding, dialog ->
         binding.tvContent.text = "内容"
         binding.btnConfirm.setOnClickListener {

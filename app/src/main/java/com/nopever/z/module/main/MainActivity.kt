@@ -69,6 +69,7 @@ class MainActivity : BaseVmActivity<ActivityMainBinding>() {
 //            setAnim(R.style.MyDialogAnim) // 设置自定义动画
             setCanceledOnTouchOutside(false) // 禁止点击外部关闭
             setCanceledOnBackPressed(false)
+            setHeightDp(300)
         }) { binding, dialog ->
             // 【这里是 View 处理逻辑】
             binding.tvContent.text = "属性已修改"

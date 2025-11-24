@@ -8,7 +8,6 @@ import androidx.annotation.StyleRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.LifecycleOwner
 import androidx.viewbinding.ViewBinding
 import com.nopever.viewx.data.DialogConfig
 
@@ -44,6 +43,14 @@ class EasyDialog private constructor(private val fragmentManager: FragmentManage
     fun setAlpha(alpha: Float) = apply { config.alpha = alpha }
 
     fun setAnim(@StyleRes anim: Int) = apply { config.animStyle = anim }
+
+    /**
+     * 设置固定高度 (dp)
+     */
+    fun setHeightDp(dp: Int) = apply {
+        val px = (dp * android.content.res.Resources.getSystem().displayMetrics.density).toInt()
+        config.height = px
+    }
 
     /**
      * 设置点击系统返回键是否取消

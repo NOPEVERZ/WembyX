@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatDialog
 import androidx.viewbinding.ViewBinding
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.nopever.viewx.data.DialogConfig
 import com.nopever.viewx.utils.CommonUtil
@@ -36,12 +37,27 @@ class UniversalDialogFragment : BottomSheetDialogFragment() {
     internal var onDismissAction: (() -> Unit)? = null
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        return if (config.isBottomSheet) {
-            // 只有标记为 BottomSheet 时，才使用底部弹窗特性
-            super.onCreateDialog(savedInstanceState)
+        if (config.isBottomSheet) {
+            // 1. 获取 BottomSheetDialog 实例
+            val dialog = super.onCreateDialog(savedInstanceState) as BottomSheetDialog
+
+            // 2. 设置 onShowListener
+            // 这种方式比在 onStart 中设置更晚，能覆盖 Theme 自动应用的样式
+            dialog.setOnShowListener {
+                val bottomSheet = dialog.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet)
+                bottomSheet?.apply {
+                    // 移除背景图
+                    background = null
+                    // 移除背景色
+                    setBackgroundColor(Color.TRANSPARENT)
+                    // 移除背景着色 (关键：很多 Theme 是通过这个属性设置颜色的)
+                    backgroundTintList = null
+                }
+            }
+            return dialog
         } else {
-            // 否则返回一个普通的 AppCompatDialog，它支持 Gravity.CENTER 或自定义坐标
-            AppCompatDialog(requireContext(), theme)
+            // 普通弹窗
+            return AppCompatDialog(requireContext(), theme)
         }
     }
 
@@ -133,8 +149,8 @@ class UniversalDialogFragment : BottomSheetDialogFragment() {
             window.attributes = params
             if (config.animStyle != 0) window.setWindowAnimations(config.animStyle)
         } else {
-            // 如果是 BottomSheet，通常只需要设置背景透明，方便显示圆角
-            window.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet)?.setBackgroundColor(Color.TRANSPARENT)
+            // 保持外部遮罩的黑度 (Dim)
+            window.setDimAmount(config.dimAmount)
         }
 
         isCancelable = config.cancelOnBackPressed
