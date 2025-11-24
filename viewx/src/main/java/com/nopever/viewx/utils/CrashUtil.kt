@@ -52,8 +52,12 @@ object CrashUtil : Thread.UncaughtExceptionHandler {
 
     /**
      * 初始化，在 Application 中调用
+     * @param isDebug 是否是debug模式，只有debug才显示崩溃信息
      */
-    fun init(context: Context) {
+    fun init(context: Context, isDebug: Boolean) {
+        if (!isDebug) {
+            return
+        }
         mContext = context
         // 获取系统默认的 UncaughtException 处理器
         mDefaultHandler = Thread.getDefaultUncaughtExceptionHandler()

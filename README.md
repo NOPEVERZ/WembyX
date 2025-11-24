@@ -75,10 +75,10 @@
 ## CrashUtil
 崩溃后自动跳转界面显示日志
 ```kotlin
-    //App里初始化
+    //App里初始化，只在debug模式显示崩溃
     override fun onCreate() {
         super.onCreate()
-        CrashUtil.init(this)
+        CrashUtil.init(this, BuildConfig.DEBUG)
     }
 ```
 
