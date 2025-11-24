@@ -21,6 +21,56 @@
 ## HeaderLayout
 头布局自定义
 
+## EasyDialog
+```kotlin
+    // 在 Activity 中直接简单调用
+    showBindDialog<DialogHintLayoutBinding> { binding, dialog ->
+        binding.tvTitle.text = "标题"
+    
+        binding.btnConfirm.setOnClickListener {
+            dialog.dismiss()
+        }
+    }
+    //自定义属性配置
+    showBindDialog<DialogHintLayoutBinding>({
+        setWidthScale(0.9f) 
+        setGravity(Gravity.TOP)
+        setDimAmount(0.3f)
+    //            setAnim(R.style.MyDialogAnim) // 设置自定义动画
+        setCanceledOnTouchOutside(false) // 禁止点击外部关闭
+        setCanceledOnBackPressed(false)
+    }) { binding, dialog ->
+        binding.tvContent.text = "内容"
+        binding.btnConfirm.setOnClickListener {
+            dialog.dismiss()
+        }
+    }
+    //底部弹窗
+    showBottomBindDialog<DialogHintLayoutBinding> { binding, dialog ->
+    }
+    //直接使用EasyDialog
+    EasyDialog.build(this)
+        .setLayout(R.layout.dialog_hint_layout)
+        .setWidthScale(0.9f)
+        .setGravity(Gravity.TOP)
+        .setDimAmount(0.3f)
+        .setBindingListener<DialogHintLayoutBinding> { binding, dialog ->
+            binding.tvTitle.text = "easy easy"
+        }
+        .show()
+    //某个View下方锚点弹窗
+    showDropDown<DialogHintLayoutBinding>(binding.tvTest) { binding, dialog ->
+    }
+    //锚点弹窗宽度和按钮不一样窄，自定义宽度并稍微调整位置：
+    showBindDialog<DialogHintLayoutBinding> ({
+        // 设置锚点，X 轴不偏移，Y 轴向下偏移 10dp
+        setAnchor(binding.tvTest, yOff = 20, matchWidth = false)
+        // 设置弹窗自己的宽度
+        setWidth(300)
+    }) { binding, dialog ->
+    }
+```
+
 ## 📦 引入 (Installation)
 
 **Step 1. Add the JitPack repository**

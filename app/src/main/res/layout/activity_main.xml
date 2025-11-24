@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="page"
+            type="com.nopever.z.module.main.MainActivity" />
     </data>
 
     <com.nopever.viewx.view.BounceView
@@ -25,32 +27,37 @@
                 app:hl_left_image="@drawable/arrow_back" />
 
             <TextView
+                android:id="@+id/tv_test"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="hahaha"
+                android:text="pop"
                 android:textSize="30sp"
-                android:layout_marginVertical="50dp" />
+                android:layout_marginVertical="50dp"
+                android:onClick="@{page::onClick}"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="hahaha"
+                android:text="bottom"
                 android:textSize="30sp"
-                android:layout_marginVertical="50dp" />
+                android:layout_marginVertical="50dp"
+                android:onClick="@{page::showBottom}"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="hahaha"
+                android:text="pop2"
                 android:textSize="30sp"
-                android:layout_marginVertical="50dp" />
+                android:layout_marginVertical="50dp"
+                android:onClick="@{page::showPop2}"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="hahaha"
+                android:text="easy dialog"
                 android:textSize="30sp"
-                android:layout_marginVertical="50dp" />
+                android:layout_marginVertical="50dp"
+                android:onClick="@{page::showEasyDialog}"/>
 
             <TextView
                 android:layout_width="wrap_content"

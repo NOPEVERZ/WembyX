@@ -19,3 +19,10 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+-keep class com.nopever.viewx.data.** { *; }
+
+# 保持 ViewBinding 的 inflate 方法不被混淆
+-keepclassmembers class * implements androidx.viewbinding.ViewBinding {
+    public static ** inflate(...);
+}

@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
     id("maven-publish")
 }
 
@@ -28,6 +30,9 @@ android {
     kotlinOptions {
         jvmTarget = '17'
     }
+    dataBinding {
+        enable true
+    }
     // 开启发布源文件配置
     publishing {
         singleVariant("release") {
@@ -48,7 +53,7 @@ afterEvaluate {
                 // 填入你的信息
                 groupId = 'com.github.NOPEVERZ' // 你的GitHub用户名
                 artifactId = 'viewx'          // 你的库名称
-                version = '0.0.2-beta'
+                version = '0.0.3-beta'
             }
         }
     }
@@ -58,6 +63,8 @@ dependencies {
     implementation libs.androidx.core.ktx
     implementation libs.androidx.appcompat
     implementation libs.material
+    kapt libs.androidx.databinding.compiler
+
     implementation libs.qmui
 
     testImplementation libs.junit
