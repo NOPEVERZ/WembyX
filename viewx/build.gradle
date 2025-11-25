@@ -46,13 +46,13 @@ android {
 
 // 创建一个任务，把 Dokka 生成的文档打包成 Jar
 tasks.register('javadocJar', Jar) {
-    // 确保 dokkaJavadoc 任务先执行
-    dependsOn dokkaJavadoc
+    // 确保 dokkaHtml 任务先执行
+    dependsOn dokkaHtml
     // 设置分类器，生成的文件名会有 -javadoc 后缀
     archiveClassifier.set('javadoc')
     // 数据来源：Dokka 的输出目录
-    // 如果报错找不到 outputDirectory，可以尝试改为: from dokkaJavadoc
-    from dokkaJavadoc.outputDirectory
+    // 如果报错找不到 outputDirectory，可以尝试改为: from dokkaHtml
+    from dokkaHtml.outputDirectory
 }
 
 // 配置发布参数
