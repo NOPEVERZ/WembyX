@@ -99,9 +99,9 @@ class MainActivity : BaseVmActivity<ActivityMainBinding>() {
         //如果不想让弹窗宽度和按钮一样窄，而是自定义宽度并稍微调整位置：
         showBindDialog<DialogHintLayoutBinding> ({
             // 设置锚点，X 轴不偏移，Y 轴向下偏移 10dp
-            setAnchor(binding.tvTest, yOff = 20, matchWidth = false)
+            setAnchor(binding.pop2, yOff = 20, matchWidth = false, horizontalGravity = Gravity.END)
             // 设置弹窗自己的宽度
-            setWidth(300)
+            setWidth(60)
             // 设置一点背景阴影
             setDimAmount(0.1f)
         }) { binding, dialog ->

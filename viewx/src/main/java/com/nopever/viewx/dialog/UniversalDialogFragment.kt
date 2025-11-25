@@ -125,20 +125,29 @@ class UniversalDialogFragment : BottomSheetDialogFragment() {
             val params = window.attributes
             val displayMetrics = resources.displayMetrics
 
-            // 宽高设置 (保持不变)
-            params.width = if (config.widthScale > 0) (displayMetrics.widthPixels * config.widthScale).toInt() else config.width
-            params.height = if (config.heightScale > 0) (displayMetrics.heightPixels * config.heightScale).toInt() else config.height
+            // 宽高设置，优先使用固定宽高
+            params.width = when {
+                config.width > 0 -> config.width
+                config.widthScale > 0 -> (displayMetrics.widthPixels * config.widthScale).toInt()
+                else -> config.width    //默认情况 (WRAP_CONTENT 或 MATCH_PARENT)
+            }
+            params.height = when {
+                config.height > 0 -> config.height
+                config.heightScale > 0 -> (displayMetrics.heightPixels * config.heightScale).toInt()
+                else -> config.height
+            }
+
             params.alpha = config.alpha
             params.dimAmount = config.dimAmount
 
             // 【新增】处理绝对坐标定位 (类似 PopupWindow)
             if (config.isAbsolutePos) {
-                // 强制重置 Gravity 为左上角，这样 X,Y 才能生效
-                window.setGravity(Gravity.TOP or Gravity.START)
-                params.gravity = Gravity.TOP or Gravity.START
+                // 【修改点】不要强制 Gravity.START，而是使用 config.gravity
+                // 这样 setAnchor 里计算好的 Gravity.END 才能生效
+                window.setGravity(config.gravity)
+                params.gravity = config.gravity
 
                 params.x = config.dialogX
-                // 修正 Y 轴坐标：减去状态栏高度，因为 Dialog 窗口通常不覆盖状态栏
                 params.y = config.dialogY - CommonUtil.getStatusBarHeight(requireContext())
             } else {
                 // 普通居中弹窗

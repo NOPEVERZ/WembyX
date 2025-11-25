@@ -1,5 +1,6 @@
 package com.nopever.viewx.dialog
 
+import android.content.res.Resources
 import android.view.Gravity
 import android.view.View
 import androidx.annotation.FloatRange
@@ -84,12 +85,14 @@ class EasyDialog private constructor(private val fragmentManager: FragmentManage
      * @param yOff Y轴偏移量
      * @param gravity相较于 anchor 的位置，目前主要支持 Gravity.BOTTOM (下方)
      * @param matchWidth 是否将弹窗宽度设置为与 anchor View 一致
+     * @param horizontalGravity 水平对齐方式:Gravity.START (默认，左对齐) Gravity.END (右对齐)
      */
     fun setAnchor(
         anchor: View,
         xOff: Int = 0,
         yOff: Int = 0,
-        matchWidth: Boolean = false
+        matchWidth: Boolean = false,
+        horizontalGravity: Int = Gravity.START // 【新增参数】
     ) = apply {
         val location = IntArray(2)
         anchor.getLocationOnScreen(location)
@@ -97,20 +100,42 @@ class EasyDialog private constructor(private val fragmentManager: FragmentManage
         val anchorY = location[1]
 
         config.isAbsolutePos = true
-        config.gravity = Gravity.TOP or Gravity.START // 内部强制使用左上角定位
-
-        // 计算坐标：默认显示在 View 下方
-        config.dialogX = anchorX + xOff
-        config.dialogY = anchorY + anchor.height + yOff
-
-        // 自动去除背景遮罩（通常下拉菜单不需要太黑的背景，或者用户自己设置 dimAmount）
         config.dimAmount = 0f
-        // 自动设置动画为下拉动画（如果有需要的话，这里可以留空让用户自己 setAnim）
-        // config.animStyle = R.style.Animation_DropDown
+
+        // 计算 Y 轴 (始终是在 View 下方)
+        config.dialogY = anchorY + anchor.height + yOff
 
         if (matchWidth) {
             config.width = anchor.width
-            config.widthScale = 0f // 禁用比例
+            config.widthScale = 0f
+            // 宽度一致时，左右对齐无所谓，使用左对齐即可
+            config.gravity = Gravity.TOP or Gravity.START
+            config.dialogX = anchorX + xOff
+        } else {
+            // 【核心逻辑】根据对齐方式计算 X
+            if ((horizontalGravity and Gravity.END) == Gravity.END ||
+                (horizontalGravity and Gravity.RIGHT) == Gravity.RIGHT) {
+
+                // === 右对齐模式 ===
+                // 设置重心为：右上角
+                config.gravity = Gravity.TOP or Gravity.END
+
+                // 获取屏幕宽度
+                val screenWidth = Resources.getSystem().displayMetrics.widthPixels
+                // 计算控件右边缘的 X 坐标
+                val anchorRightX = anchorX + anchor.width
+
+                // 计算 x 值：即 "屏幕右边缘" 到 "控件右边缘" 的距离
+                // 注意：在 Gravity.END 下，x 是距离右边的偏移量
+                // xOff: 正数表示向右偏移(视觉上)，负数向左。
+                // 因为是从右边往左算，为了符合直觉(xOff正数向右移)，这里应该是 减去 xOff
+                config.dialogX = (screenWidth - anchorRightX) - xOff
+
+            } else {
+                // === 左对齐模式 (默认) ===
+                config.gravity = Gravity.TOP or Gravity.START
+                config.dialogX = anchorX + xOff
+            }
         }
     }
 
