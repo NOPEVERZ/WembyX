@@ -3,7 +3,8 @@ plugins {
     alias(libs.plugins.kotlin.android)
     id 'kotlin-kapt'
     id 'kotlin-parcelize'
-    id("maven-publish")
+    id 'maven-publish'
+    id 'org.jetbrains.dokka' // 应用 Dokka 插件
 }
 
 android {
@@ -41,6 +42,17 @@ android {
     }
 }
 
+// 创建一个任务，把 Dokka 生成的文档打包成 Jar
+tasks.register('javadocJar', Jar) {
+    // 确保 dokkaJavadoc 任务先执行
+    dependsOn dokkaJavadoc
+    // 设置分类器，生成的文件名会有 -javadoc 后缀
+    archiveClassifier.set('javadoc')
+    // 数据来源：Dokka 的输出目录
+    // 如果报错找不到 outputDirectory，可以尝试改为: from dokkaJavadoc
+    from dokkaJavadoc.outputDirectory
+}
+
 // 配置发布参数
 afterEvaluate {
     publishing {
@@ -53,7 +65,11 @@ afterEvaluate {
                 // 填入你的信息
                 groupId = 'com.github.NOPEVERZ' // 你的GitHub用户名
                 artifactId = 'viewx'          // 你的库名称
-                version = '0.0.9-beta'
+                version = '0.0.10-beta'
+
+                // 引用上面的任务
+                // 因为是 register 注册的，这里直接写名字即可，Gradle 会自动处理 Provider
+                artifact javadocJar
             }
         }
     }
