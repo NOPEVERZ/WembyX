@@ -1,3 +1,5 @@
+import org.jetbrains.dokka.gradle.DokkaTask
+
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
@@ -72,6 +74,21 @@ afterEvaluate {
                 artifact javadocJar
             }
         }
+    }
+}
+
+// ✅ 新增：解决 Kapt 和 Dokka 的冲突
+// 强制 Dokka 任务必须在 Kapt 任务之后运行
+tasks.withType(DokkaTask.class).configureEach {
+    // 尝试找到 kapt 任务，如果存在则添加依赖
+    def kaptRelease = tasks.named("kaptReleaseKotlin")
+    if (kaptRelease != null) {
+        dependsOn(kaptRelease)
+    }
+
+    def kaptDebug = tasks.named("kaptDebugKotlin")
+    if (kaptDebug != null) {
+        dependsOn(kaptDebug)
     }
 }
 
