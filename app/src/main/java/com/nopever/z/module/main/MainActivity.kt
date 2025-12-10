@@ -8,6 +8,7 @@ import com.nopever.viewx.dialog.EasyDialog
 import com.nopever.viewx.dialog.showBindDialog
 import com.nopever.viewx.dialog.showBottomBindDialog
 import com.nopever.viewx.dialog.showDropDown
+import com.nopever.viewx.utils.SpMutableLiveData
 import com.nopever.z.R
 import com.nopever.z.databinding.ActivityMainBinding
 import com.nopever.z.databinding.DialogHintLayoutBinding
@@ -112,5 +113,11 @@ class MainActivity : BaseVmActivity<ActivityMainBinding>() {
     fun crashTest(view: View) {
         val i = "sssss"
         val str = i.toInt()
+    }
+
+    val testsp = SpMutableLiveData("hahah", true)
+
+    fun spTest(view: View) {
+        testsp.setValue(!(testsp.value?:false))
     }
 }

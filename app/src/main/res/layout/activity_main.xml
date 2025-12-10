@@ -12,64 +12,87 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center_horizontal">
+            android:layout_height="wrap_content">
 
-            <com.nopever.viewx.view.HeaderLayout
-                android:id="@+id/hl"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:hl_center_text="ss"
-                app:hl_right_text="ssss"
-                app:hl_left_image="@drawable/arrow_back" />
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
 
-            <TextView
-                android:id="@+id/tv_test"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="pop"
-                android:textSize="30sp"
-                android:layout_marginVertical="50dp"
-                android:onClick="@{page::onClick}"/>
+                <com.nopever.viewx.view.HeaderLayout
+                    android:id="@+id/hl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:hl_center_text="ss"
+                    app:hl_right_text="ssss"
+                    app:hl_left_image="@drawable/arrow_back" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="bottom"
-                android:textSize="30sp"
-                android:layout_marginVertical="50dp"
-                android:onClick="@{page::showBottom}"/>
+                <TextView
+                    android:id="@+id/tv_test"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="pop"
+                    android:textSize="30sp"
+                    android:layout_marginVertical="50dp"
+                    android:onClick="@{page::onClick}"/>
 
-            <TextView
-                android:id="@+id/pop2"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:text="pop2"
-                android:textSize="30sp"
-                android:gravity="end"
-                android:layout_marginVertical="50dp"
-                android:onClick="@{page::showPop2}"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="bottom"
+                    android:textSize="30sp"
+                    android:layout_marginVertical="50dp"
+                    android:onClick="@{page::showBottom}"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="easy dialog"
-                android:textSize="30sp"
-                android:layout_marginVertical="50dp"
-                android:onClick="@{page::showEasyDialog}"/>
+                <TextView
+                    android:id="@+id/pop2"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:text="pop2"
+                    android:textSize="30sp"
+                    android:gravity="end"
+                    android:layout_marginVertical="50dp"
+                    android:onClick="@{page::showPop2}"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="crash"
-                android:textSize="30sp"
-                android:layout_marginVertical="50dp"
-                android:onClick="@{page::crashTest}"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="easy dialog"
+                    android:textSize="30sp"
+                    android:layout_marginVertical="50dp"
+                    android:onClick="@{page::showEasyDialog}"/>
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="crash"
+                    android:textSize="30sp"
+                    android:layout_marginVertical="50dp"
+                    android:onClick="@{page::crashTest}"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{page.testsp.toString()}"
+                    android:textSize="30sp"
+                    android:layout_marginVertical="50dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="sp mutablelivedata"
+                    android:textSize="30sp"
+                    android:layout_marginVertical="50dp"
+                    android:onClick="@{page::spTest}"/>
+
+
+
+            </LinearLayout>
+
+        </ScrollView>
 
     </com.nopever.viewx.view.BounceView>
 

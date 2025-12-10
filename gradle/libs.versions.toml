@@ -17,9 +17,11 @@ qmui = "2.1.0"
 retrofit = "2.9.0"
 loggingInterceptor = "4.10.0"
 room = "2.6.1"
+startupRuntime = "1.1.1"
 
 [libraries]
 androidx-databinding-compiler = { module = "androidx.databinding:databinding-compiler", version.ref = "agp" }
+androidx-startup-runtime = { module = "androidx.startup:startup-runtime", version.ref = "startupRuntime" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
