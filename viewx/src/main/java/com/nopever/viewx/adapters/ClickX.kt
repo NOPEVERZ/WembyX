@@ -22,10 +22,38 @@ fun throttleClickNoView(wait: Long = 300, block: (() -> Unit)): View.OnClickList
 
 /**
  * 防抖点击, 移除onClick的View参数
- * @param callback 点击事件
+ * @param action 点击事件
  * @param interval 点击间隔时间
  */
 @BindingAdapter("onClickX", "clickInterval", requireAll = false)
-fun bindThrottleClickX(view: View, callback: (() -> Unit)?, interval: Int? = 300) {
-    callback?.let { view.onClickX(interval?.toLong() ?: 300, it) }
+fun bindThrottleClickX(view: View, action: OnClickActionX?, interval: Int? = 300) {
+    action?.let { listener ->
+        // 将接口桥接到你的扩展方法中
+        view.onClickX(interval?.toLong() ?: 300) {
+            listener.onAction()
+        }
+    }
 }
+
+/**
+ * 一个不带参数的点击回调接口，专门用于 DataBinding
+ */
+fun interface OnClickActionX {
+    fun onAction()
+}
+
+//@BindingAdapter("onClickX", "clickInterval", requireAll = false)
+//fun bindThrottleClickX(view: View, callback: (() -> Unit)?, interval: Int? = 300) {
+//    callback?.let { view.onClickX(interval?.toLong() ?: 300, it) }
+//}
+
+
+//@BindingAdapter("onClickX", "clickInterval", requireAll = false)
+//fun bindThrottleClickX(view: View, listener: View.OnClickListener?, interval: Int? = 300) {
+//    listener?.let {
+//        view.onClickX(interval?.toLong() ?: 300) {
+//            it.onClick(view)
+//        }
+//    }
+//}
+

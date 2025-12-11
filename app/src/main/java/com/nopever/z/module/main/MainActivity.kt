@@ -123,7 +123,7 @@ class MainActivity : BaseVmActivity<ActivityMainBinding>() {
 
     val isChecked = MutableStateFlow(false)
 
-    fun spTest(view: View) {
+    fun spTest() {
         sp.toggle()
         testsp.setValue(!(testsp.value?:false))
     }
