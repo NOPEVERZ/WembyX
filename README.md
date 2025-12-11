@@ -2,12 +2,13 @@
 
 [![](https://jitpack.io/v/NOPEVERZ/WembyX.svg)](https://jitpack.io/#NOPEVERZ/WembyX)
 
-一个简单的Android Lib，包含一些自定义view,工具类，扩展方法。  
+一个简单的Android Lib，包含一些自定义view，工具类，扩展方法。  
 代码都是AI生成的，包括整个库的流程，练习使用。  
 
 出现问题，请找AI👉 &nbsp;
-<a href="https://gemini.google.com" target="_blank">Gemini</a>&emsp;
-<a href="https://aistudio.google.com" target="_blank">Google AI Studio</a>
+[Gemini](https://gemini.google.com)&emsp;
+[Google AI Studio](https://aistudio.google.com)
+
 
 ## View
 <details>
