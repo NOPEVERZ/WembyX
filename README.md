@@ -115,6 +115,23 @@ test.setValue(false)
 ## Utils
 
 <details>
+<summary><b>ClickX</b></summary>
+
+- 防抖点击  
+自定义点击间隔，加clickInterval，不加默认300ms
+```xml
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CLICK"
+                    onClickX="@{page::onClickTest}"
+                    clickInterval="@{3000}" />
+
+ ```                   
+
+</details>
+
+<details>
 <summary><b>LiveDataX</b></summary>
   
 - MutableLiveData<Boolean>.toggle()或togglePost() 切换boolean
