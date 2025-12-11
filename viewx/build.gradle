@@ -42,6 +42,9 @@ android {
             withSourcesJar()
         }
     }
+    buildFeatures {
+        dataBinding = true // 【关键】必须开启
+    }
 }
 
 // 创建一个任务，把 Dokka 生成的文档打包成 Jar
@@ -67,7 +70,7 @@ afterEvaluate {
                 // 填入你的信息
                 groupId = 'com.github.NOPEVERZ' // 你的GitHub用户名
                 artifactId = 'viewx'          // 你的库名称
-                version = '0.0.14-beta'
+                version = '0.0.15-beta'
 
                 // 引用上面的任务
                 // 因为是 register 注册的，这里直接写名字即可，Gradle 会自动处理 Provider

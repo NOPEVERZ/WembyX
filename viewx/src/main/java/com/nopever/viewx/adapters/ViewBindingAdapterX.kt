@@ -20,3 +20,8 @@ fun isVisible(view: View, show: Boolean) {
 fun isGone(view: View, gone: Boolean) {
     view.isGone = gone
 }
+
+@BindingAdapter("onClickVisibleTest")
+fun onClickVisibleTest(view: View, show: Boolean) {
+    view.isInvisible = !show
+}
