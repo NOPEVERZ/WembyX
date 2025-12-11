@@ -25,7 +25,7 @@ fun throttleClickNoView(wait: Long = 300, block: (() -> Unit)): View.OnClickList
  * @param callback 点击事件
  * @param interval 点击间隔时间
  */
-@BindingAdapter("android:onClickX", "interval", requireAll = false)
+@BindingAdapter("onClickX", "clickInterval", requireAll = false)
 fun bindThrottleClickX(view: View, callback: (() -> Unit)?, interval: Int? = 300) {
     callback?.let { view.onClickX(interval?.toLong() ?: 300, it) }
 }
