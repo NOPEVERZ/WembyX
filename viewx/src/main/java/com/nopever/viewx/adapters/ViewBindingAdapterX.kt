@@ -21,7 +21,29 @@ fun isGone(view: View, gone: Boolean) {
     view.isGone = gone
 }
 
+@BindingAdapter("clickX", "clickInterval", requireAll = false)
+fun clickX(view: View, action: OnClickActionX?, interval: Int? = 300) {
+    action?.let { listener ->
+        // 将接口桥接到你的扩展方法中
+        view.onClickX(interval?.toLong() ?: 300) {
+            listener.onAction()
+        }
+    }
+}
+
+@BindingAdapter("clickXTest")
+fun clickXTest(view: View, action: OnClickActionX?) {
+    action?.let { listener ->
+        // 将接口桥接到你的扩展方法中
+        view.onClickX(300) {
+            listener.onAction()
+        }
+    }
+}
+
+
 @BindingAdapter("onClickVisibleTest")
 fun onClickVisibleTest(view: View, show: Boolean) {
     view.isInvisible = !show
 }
+
