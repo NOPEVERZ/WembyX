@@ -1,4 +1,4 @@
-package com.nopever.viewx.manager
+package com.nopever.viewx.core
 
 import android.content.Context
 import com.nopever.viewx.utils.appContextX

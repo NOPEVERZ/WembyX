@@ -17,7 +17,7 @@
             tools:node="merge">
 
             <meta-data
-                android:name="com.nopever.viewx.manager.LibInitializer"
+                android:name="com.nopever.viewx.core.LibInitializer"
                 android:value="androidx.startup" />
         </provider>
 

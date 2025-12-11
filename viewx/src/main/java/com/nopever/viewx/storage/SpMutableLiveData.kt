@@ -1,9 +1,10 @@
-package com.nopever.viewx.utils
+package com.nopever.viewx.storage
 
 import android.content.Context
 import android.util.Log
 import androidx.core.content.edit
 import androidx.lifecycle.MutableLiveData
+import com.nopever.viewx.utils.appContextX
 
 /**
  * 一个通用的 MutableLiveData，它会自动将其值的变化持久化到 SharedPreferences。

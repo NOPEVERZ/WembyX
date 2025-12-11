@@ -10,7 +10,7 @@ import androidx.viewbinding.ViewBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.nopever.viewx.data.DialogConfig
-import com.nopever.viewx.utils.CommonUtil
+import com.nopever.viewx.utils.getStatusBarHeight
 
 class UniversalDialogFragment : BottomSheetDialogFragment() {
 
@@ -148,7 +148,7 @@ class UniversalDialogFragment : BottomSheetDialogFragment() {
                 params.gravity = config.gravity
 
                 params.x = config.dialogX
-                params.y = config.dialogY - CommonUtil.getStatusBarHeight(requireContext())
+                params.y = config.dialogY - getStatusBarHeight(requireContext())
             } else {
                 // 普通居中弹窗
                 window.setGravity(config.gravity)

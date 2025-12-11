@@ -86,9 +86,7 @@
                     android:text="sp mutablelivedata"
                     android:textSize="30sp"
                     android:layout_marginVertical="50dp"
-                    android:onClick="@{page::spTest}"/>
-
-
+                    android:onClick="@{page::spTest}" />
 
             </LinearLayout>
 

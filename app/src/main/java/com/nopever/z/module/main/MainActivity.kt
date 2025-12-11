@@ -3,17 +3,19 @@ package com.nopever.z.module.main
 import android.os.Bundle
 import android.view.Gravity
 import android.view.View
-import android.widget.Toast
+import androidx.lifecycle.MutableLiveData
 import com.nopever.viewx.dialog.EasyDialog
 import com.nopever.viewx.dialog.showBindDialog
 import com.nopever.viewx.dialog.showBottomBindDialog
 import com.nopever.viewx.dialog.showDropDown
-import com.nopever.viewx.utils.SpMutableLiveData
+import com.nopever.viewx.storage.SpMutableLiveData
+import com.nopever.viewx.utils.toggle
 import com.nopever.z.R
 import com.nopever.z.databinding.ActivityMainBinding
 import com.nopever.z.databinding.DialogHintLayoutBinding
 import com.nopever.z.module.base.BaseVmActivity
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.MutableStateFlow
 
 @AndroidEntryPoint
 class MainActivity : BaseVmActivity<ActivityMainBinding>() {
@@ -115,9 +117,14 @@ class MainActivity : BaseVmActivity<ActivityMainBinding>() {
         val str = i.toInt()
     }
 
-    val testsp = SpMutableLiveData("hahah", true)
+    val testsp = SpMutableLiveData<Boolean>("hahah", true)
+
+    val sp = MutableLiveData<Boolean?>()
+
+    val isChecked = MutableStateFlow(false)
 
     fun spTest(view: View) {
+        sp.toggle()
         testsp.setValue(!(testsp.value?:false))
     }
 }

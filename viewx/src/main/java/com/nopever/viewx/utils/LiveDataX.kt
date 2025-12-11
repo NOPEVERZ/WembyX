@@ -22,11 +22,25 @@ fun MutableLiveData<Boolean>.toggle() {
 
 /**
  * 切换 MutableLiveData<Boolean> 的值（线程安全）。
- *
+ * 不一定线程安全
  * 此方法使用 `postValue()`，可以从任何线程调用。
  * 它会异步地在主线程上更新值。
  */
 fun MutableLiveData<Boolean>.togglePost() {
     val currentValue = this.value ?: false
     this.postValue(!currentValue)
+}
+
+@JvmName("togglePostNullable")
+fun MutableLiveData<Boolean?>.togglePost() {
+    val currentValue = this.value ?: false
+    this.postValue(!currentValue)
+}
+
+/**
+ * 为可空 Boolean
+ */
+@JvmName("toggleNullableBoolean")
+fun MutableLiveData<Boolean?>.toggle() {
+    this.value = this.value?.not()
 }

@@ -2,6 +2,9 @@ package com.nopever.viewx.utils
 
 import androidx.annotation.RawRes
 
+/**
+ * 读取asset 文本文件
+ */
 fun readAssetText(fileName: String): String {
     return try {
         appContextX.assets.open(fileName).bufferedReader().use {
