@@ -25,8 +25,10 @@ fun bindAppIcon(imageView: ImageView, packageName: String?) {
 }
 
 @BindingAdapter("bindIvResId")
-fun bindIvResId(imageView: ImageView, resId: Int?) {
-    resId?.let {
+fun bindIvResId(imageView: ImageView, resId: Int) {
+    if (resId != 0) {
         imageView.setImageResource(resId)
+    } else {
+        imageView.setImageDrawable(null)
     }
 }
