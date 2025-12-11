@@ -2,10 +2,17 @@
 
 [![](https://jitpack.io/v/NOPEVERZ/WembyX.svg)](https://jitpack.io/#NOPEVERZ/WembyX)
 
-一个简单的Android View库。
-大部分代码都是AI生成的，包括整个库的流程，纯纯的练习用。
+一个简单的Android Lib，包含一些自定义view,工具类，扩展方法。  
+代码都是AI生成的，包括整个库的流程，练习使用。  
 
-## BounceView
+出现问题，请找AI👉 &nbsp;
+<a href="https://gemini.google.com" target="_blank">Gemini</a>&emsp;
+<a href="https://aistudio.google.com" target="_blank">Google AI Studio</a>
+
+## View
+<details>
+<summary><b>BounceView</b></summary>
+
 一个轻量级的 Android 弹性滚动容器，支持顶部和底部回弹效果 (Overscroll bounce)。
 支持包裹 RecyclerView, ScrollView, 甚至 LinearLayout 等任意视图。
 
@@ -18,10 +25,29 @@
 在 XML 布局中，用 BounceView 包裹内容视图。
 注意：BounceView 只能有一个直接子 View。
 
-## HeaderLayout
+</details>
+
+<details>
+<summary><b>HeaderLayout</b></summary>
+
 头布局自定义
 
+</details>
+
+<details>
+<summary><strong>CenteredDrawableTextView</strong></summary>
+
+一个自定义 TextView，当宽度为 match_parent 或固定宽度时，
+ 它会将左侧的 drawable 和文本一起居中。
+
+</details>
+
+
 ## EasyDialog
+
+<details>
+<summary><strong>使用示例</strong></summary>
+
 ```kotlin
     // 在 Activity/Fragment 中直接简单调用
     showBindDialog<DialogHintLayoutBinding> { binding, dialog ->
@@ -72,8 +98,76 @@
     }
 ```
 
+</details>
+
+## Storage
+
+<details>
+<summary><b>SpMutableLiveData</b></summary>
+
+一个通用的 MutableLiveData，它会自动将其值的变化持久化到 SharedPreferences。  
+val test = SpMutableLiveData("key", true)  
+test.setValue(false)
+
+</details>
+
+## Utils
+
+<details>
+<summary><b>LiveDataX</b></summary>
+  
+- MutableLiveData<Boolean>.toggle()或togglePost() 切换boolean
+
+</details>
+
+<details>
+<summary><b>NumberX</b></summary>
+
+数字相关扩展方法
+
+</details>
+
+<details>
+<summary><b>ResourceX</b></summary>
+
+- readAssetText(String)读取asset 文本文件     
+- readRawText(String)读取 raw 文本文件
+
+</details>
+
+<details>
+<summary><b>ScreenX</b></summary>
+
+- FragmentActivity/Fragment.statusBarTextColor(Boolean) 设置状态栏文本颜色
+
+</details>
+
+<details>
+<summary><b>TextHighlightUtil</b></summary>
+
+文本高亮工具类，高亮文本，添加点击。
+
+</details>
+
+<details>
+<summary><b>TimeX</b></summary>
+
+时间日期相关扩展方法
+
+</details>
+
+<details>
+<summary><b>StringX</b></summary>
+
+字符串相关扩展方法
+
+</details>
+
 ## CrashUtil
-崩溃后自动跳转界面显示日志
+
+<details>
+<summary><b>崩溃后自动跳转界面显示日志</b></summary>
+
 ```kotlin
     //App里初始化，只在debug模式显示崩溃
     override fun onCreate() {
@@ -81,6 +175,10 @@
         CrashUtil.init(this, BuildConfig.DEBUG)
     }
 ```
+
+</details>
+
+
 
 ## 📦 引入 (Installation)
 
@@ -98,6 +196,6 @@ dependencyResolutionManagement {
 **Step 2. Add the dependency 在 App 模块的 build.gradle 中添加依赖：**
 ```gradle
 dependencies {
-    implementation 'com.github.NOPEVERZ:WembyX:0.0.1-beta'
+    implementation 'com.github.NOPEVERZ:WembyX:0.0.12-beta'
 }
 ```
