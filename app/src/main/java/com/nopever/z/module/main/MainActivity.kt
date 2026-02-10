@@ -14,6 +14,7 @@ import com.nopever.z.module.arch.BaseVmActivity
 import com.nopever.z.module.arch.FragmentAttachActivity
 import com.nopever.z.module.dialog.DialogTestFragment
 import com.nopever.z.module.pb.PbFragment
+import com.nopever.z.module.reuslt.ResultFragment
 import com.nopever.z.widget.setupAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlin.reflect.KClass
@@ -32,6 +33,14 @@ class MainActivity : BaseVmActivity<ActivityMainBinding>() {
         TestFeature("Dialog", DialogTestFragment::class),
         TestFeature("ProgressBar", PbFragment::class),
         TestFeature("CrashActivity", activityClass = CrashActivity::class),
+        TestFeature("Fragment Result") {
+            ResultFragment.start(this) { result ->
+                if (result.resultCode == Activity.RESULT_OK) {
+                    val data = result.data?.getStringExtra("result")
+                    Toast.makeText(it, data, Toast.LENGTH_SHORT).show()
+                }
+            }
+        },
 
         TestFeature("Toast") {
             Toast.makeText(it, "i'm toast.", Toast.LENGTH_SHORT).show()
