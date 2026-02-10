@@ -30,6 +30,11 @@
             android:screenOrientation="portrait">
         </activity>
 
+        <activity
+            android:name=".module.arch.FragmentAttachActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>

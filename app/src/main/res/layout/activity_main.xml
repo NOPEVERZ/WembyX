@@ -12,85 +12,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ScrollView
+        <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center_horizontal">
-
-                <com.nopever.viewx.view.HeaderLayout
-                    android:id="@+id/hl"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:hl_center_text="ss"
-                    app:hl_right_text="ssss"
-                    app:hl_left_image="@drawable/arrow_back" />
-
-                <TextView
-                    android:id="@+id/tv_test"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="pop"
-                    android:textSize="30sp"
-                    android:layout_marginVertical="50dp"
-                    android:onClick="@{page::onClick}"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="bottom"
-                    android:textSize="30sp"
-                    android:layout_marginVertical="50dp"
-                    android:onClick="@{page::showBottom}"/>
-
-                <TextView
-                    android:id="@+id/pop2"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:text="pop2"
-                    android:textSize="30sp"
-                    android:gravity="end"
-                    android:layout_marginVertical="50dp"
-                    android:onClick="@{page::showPop2}"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="easy dialog"
-                    android:textSize="30sp"
-                    android:layout_marginVertical="50dp"
-                    android:onClick="@{page::showEasyDialog}"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="crash"
-                    android:textSize="30sp"
-                    android:layout_marginVertical="50dp"
-                    android:onClick="@{page::crashTest}"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{page.testsp.toString()}"
-                    android:textSize="30sp"
-                    android:layout_marginVertical="50dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="sp mutablelivedata"
-                    android:textSize="30sp"
-                    android:layout_marginVertical="50dp"
-                    onClickX="@{() -> page.spTest()}" />
-
-            </LinearLayout>
-
-        </ScrollView>
+            android:layout_height="match_parent"/>
 
     </com.nopever.viewx.view.BounceView>
 

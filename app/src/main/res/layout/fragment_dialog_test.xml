@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="page"
+            type="com.nopever.z.module.dialog.DialogTestFragment" />
+
+        <variable
+            name="viewModel"
+            type="com.nopever.z.module.dialog.DialogTestViewModel" />
+            
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="ContentDescription">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="UselessParent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
+
+                <com.nopever.viewx.view.HeaderLayout
+                    android:id="@+id/hl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:hl_center_text="ss"
+                    app:hl_right_text="ssss"
+                    app:hl_left_image="@drawable/arrow_back" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="dialog"
+                    android:textSize="30sp"
+                    android:layout_marginVertical="50dp"
+                    onClickX="@{page::onClickDialog}" />
+
+
+                <TextView
+                    android:id="@+id/tv_test"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="pop"
+                    android:textSize="30sp"
+                    android:layout_marginVertical="50dp"
+                    android:onClick="@{page::onClick}"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="bottom"
+                    android:textSize="30sp"
+                    android:layout_marginVertical="50dp"
+                    android:onClick="@{page::showBottom}"/>
+
+                <TextView
+                    android:id="@+id/pop2"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:text="pop2"
+                    android:textSize="30sp"
+                    android:gravity="end"
+                    android:layout_marginVertical="50dp"
+                    android:onClick="@{page::showPop2}"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="easy dialog"
+                    android:textSize="30sp"
+                    android:layout_marginVertical="50dp"
+                    android:onClick="@{page::showEasyDialog}"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="crash"
+                    android:textSize="30sp"
+                    android:layout_marginVertical="50dp"
+                    android:onClick="@{page::crashTest}"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{page.testsp.toString()}"
+                    android:textSize="30sp"
+                    android:layout_marginVertical="50dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="sp mutablelivedata"
+                    android:textSize="30sp"
+                    android:layout_marginVertical="50dp"
+                    onClickX="@{() -> page.spTest()}" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </FrameLayout>
+
+</layout>
